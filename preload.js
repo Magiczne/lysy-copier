@@ -5,6 +5,13 @@
  *
  * https://www.electronjs.org/docs/latest/tutorial/sandbox
  */
+const { clipboard, contextBridge, ipcRenderer } = require('electron')
+
+contextBridge.exposeInMainWorld('electron', {
+  setClipboardText: (text) => ipcRenderer.invoke('set-clipboard-text', text),
+  ipcRenderer: ipcRenderer
+})
+
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)

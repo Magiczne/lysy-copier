@@ -6,13 +6,43 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
     <link href="./styles.css" rel="stylesheet">
     <title>Hello World!</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      div {
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 2;
+        border: 1px solid #000;
+        padding: 8px;
+      }
+
+      div.selected {
+        background-color: #0f0;
+      }
+
+      textarea {
+        width: 100%;
+        resize: none;
+        margin: 0;
+        flex: 1;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>
